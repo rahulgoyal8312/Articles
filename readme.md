@@ -1,6 +1,6 @@
 # Articles
 
-![Alt Text](https://github.com/rahulgoyal8312/Articles/public/Article.png)
+![Alt Text](https://github.com/rahulgoyal8312/Articles/blob/master/public/Articles.png)
 
 ## prerequisite
 - composer should be installed
