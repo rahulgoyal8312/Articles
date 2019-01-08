@@ -1,42 +1,53 @@
 <template>
-	<div>
-		<h2>Articles</h2>
-		<form class="mb-3" @submit.prevent="addArticle">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="title" v-model="article.title">
-			</div>
-			<div class="form-group">
-				<textarea type="text" class="form-control" placeholder="Body" v-model="article.body"></textarea>
-			</div>
-			<button class="btn btn-success btn-block">Save</button>
+	<div>	
+		<div class="mt-4 mb-5">
+			<!-- <h2>Articles</h2> -->
+			<form class="mb-3" @submit.prevent="addArticle">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Enter Title" v-model="article.title">
+				</div>
+				<div class="form-group">
+					<textarea type="text" class="form-control" placeholder="Enter Body" v-model="article.body"></textarea>
+				</div>
+				<button class="btn btn-success btn-block" type="submit">Save</button>
+				<button class="btn btn-danger btn-block" type="reset">Reset</button>
 
-		</form>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<li class="page-item" v-bind:class="[{disabled: !pagination.prev_page_url}]">
-				<a class="page-link" href="#" @click="fetchArticles(pagination.prev_page_url)"> Previous</a></li>
+			</form>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" v-bind:class="[{disabled: !pagination.prev_page_url}]">
+					<a class="page-link" href="#" @click="fetchArticles(pagination.prev_page_url)"> Previous</a></li>
 
-				<li class="page-item disabled"><a href="#" class="page-link text-dark">
-				Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+					<li class="page-item disabled"><a href="#" class="page-link text-dark">
+					Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
 
-				<li class="page-item" v-bind:class="[{disabled: !pagination.next_page_url}]">
-				<a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)"> Next</a></li>
-			</ul>
-		</nav>
-		<div class="card mb-2" v-for="article in articles" v-bind:key="article.id">
-			<div class="card-body">
-				<h3>{{ article.title }}</h3>
-				<p>{{ article.body }}</p>
-				<hr>
-				<button @click="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
-				<button @click="editArticle(article)" class="btn btn-warning">Edit</button>
+					<li class="page-item" v-bind:class="[{disabled: !pagination.next_page_url}]">
+					<a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)"> Next</a></li>
+				</ul>
+			</nav>
+			<div class="card mb-2" v-for="article in articles" v-bind:key="article.id">
+				<div class="card-body">
+					<h3>{{ article.title }}</h3>
+					<p>{{ article.body }}</p>
+					<hr>
+					<button @click="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
+					<button @click="editArticle(article)" class="btn btn-warning">Edit</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	
+	import ArticleFooter from './ArticleFooter.vue';
+
 	export default {
+
+		components: {
+			ArticleFooter
+		},
+
 		data() {
 			return  {
 				articles: [],

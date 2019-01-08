@@ -15,6 +15,7 @@
             <div class="container">
                 <articles></articles>
             </div>
+            <articlefooter></articlefooter>
         </div>
 
         @include('script')
