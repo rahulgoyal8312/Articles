@@ -10,7 +10,7 @@
 					<textarea type="text" class="form-control" placeholder="Enter Body" v-model="article.body"></textarea>
 				</div>
 				<button class="btn btn-success btn-block" type="submit">Save</button>
-				<button class="btn btn-danger btn-block" type="reset">Reset</button>
+				<button class="btn btn-danger btn-block" type="reset" @click="reset()">Reset</button>
 
 			</form>
 			<nav aria-label="Page navigation example">
@@ -146,7 +146,16 @@
 		      this.article.id = article.id;
 		      this.article.article_id = article.id;
 		      this.article.title = article.title;
-		      this.article.body = article.body;		    }
+		      this.article.body = article.body;		    
+		    },
+
+		    reset(){
+		      this.edit = false;
+		      this.article.id = null;
+		      this.article.article_id = null;
+		      this.article.title = null;
+		      this.article.body = null;		    
+		    }
 		}
 	}
 </script>
